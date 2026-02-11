@@ -12,7 +12,16 @@ app.use(
   })
 )
 
+import cookieParser from "cookie-parser";
+app.use(cookieParser());
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+
 import dbconnects from "./DataBase/db.connect.js";
+
+import { authRouter } from "./Routes/user.routes.js";
+app.use("/api/auth",authRouter)
 
 app.listen(process.env.PORT,(req,res)=>{
  console.log("the app is listening");

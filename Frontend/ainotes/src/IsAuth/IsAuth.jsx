@@ -8,12 +8,22 @@ import { FaDownload } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../Utils/firebase.js";
+import { useContext } from "react";
+import { ServerContext } from "../Context/servercontext.jsx";
+import axios from "axios"
 function IsAuth(){
-
+           let {serverURL}=useContext(ServerContext);
+           console.log(serverURL)
     async function handlegoogleauth(){
         try {
             let response=await signInWithPopup(auth,provider);
             console.log(response)
+            const user = response.user;
+            const name=user.displayName;
+            const email=user.email
+
+            let result=await axios.post(`${serverURL}/api/auth/google`,{name,email},)
+            console.log(result.data)
         } catch (error) {
             console.log(error)
         }

@@ -20,8 +20,11 @@ app.use(express.json())
 
 import dbconnects from "./DataBase/db.connect.js";
 
-import { authRouter } from "./Routes/user.routes.js";
+import { authRouter } from "./Routes/auth.routes.js";
 app.use("/api/auth",authRouter)
+
+import { userRouter } from "./Routes/user.routes.js";
+app.use("/api/user",userRouter)
 
 app.listen(process.env.PORT,(req,res)=>{
  console.log("the app is listening");

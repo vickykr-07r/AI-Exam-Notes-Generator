@@ -13,16 +13,14 @@ import { ServerContext } from "../Context/servercontext.jsx";
 import axios from "axios"
 function IsAuth(){
            let {serverURL}=useContext(ServerContext);
-           console.log(serverURL)
     async function handlegoogleauth(){
         try {
             let response=await signInWithPopup(auth,provider);
-            console.log(response)
             const user = response.user;
             const name=user.displayName;
             const email=user.email
 
-            let result=await axios.post(`${serverURL}/api/auth/google`,{name,email},)
+            let result=await axios.post(`${serverURL}/api/auth/google`,{name,email},{withCredentials:true})
             console.log(result.data)
         } catch (error) {
             console.log(error)

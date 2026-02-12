@@ -1,6 +1,6 @@
-import express from "express";
-export let authRouter=express.Router();
-import { googleAuth, logout } from "../Controllers/IsAuth.controllers.js";
+import express from "express"
+import { isAuth } from "../Middlewares/isAuth.js"
+import { getCurrentUser } from "../Controllers/user.controllers.js"
+export const userRouter=express.Router()
 
-authRouter.post("/google",googleAuth);
-authRouter.post("/logout",logout);
+userRouter.get("/getcurrentuser",isAuth,getCurrentUser)

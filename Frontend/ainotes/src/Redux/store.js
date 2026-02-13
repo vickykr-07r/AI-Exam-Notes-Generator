@@ -5,3 +5,5 @@ reducer:{
     user:userSlice
 }
 })
+
+export default store

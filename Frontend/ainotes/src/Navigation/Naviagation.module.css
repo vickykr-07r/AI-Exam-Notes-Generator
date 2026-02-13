@@ -1,0 +1,121 @@
+.nav{
+  width: 100%;
+  min-height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #0f172a;
+  color: white;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.navleft h1{
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.navright{
+  display: flex;
+  align-items: center;
+}
+
+.navrightbox{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #1e293b;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.navrightbox:hover{
+  background: #334155;
+}
+
+.navrightbox span{
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.creditPopup{
+  position: absolute;
+  right: 20px;
+  top: 80px;
+  width: 300px;
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  animation: popup 0.3s ease;
+  z-index: 100;
+}
+
+.creditPopup h1{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.creditPopup p{
+  font-size: 14px;
+  color: #cbd5f5;
+  margin-bottom: 15px;
+}
+
+.creditPopup button{
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.creditPopup button:hover{
+  background: #2563eb;
+}
+
+@keyframes popup{
+  from{
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px){
+  .creditPopup{
+    right: 10px;
+    width: 260px;
+  }
+
+  .navleft h1{
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px){
+  .nav{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .creditPopup{
+    width: 100%;
+    right: 0;
+    top: 100%;
+  }
+}

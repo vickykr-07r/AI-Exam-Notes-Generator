@@ -8,12 +8,20 @@ import { FaDownload } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../Utils/firebase.js";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ServerContext } from "../Context/servercontext.jsx";
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setuserData } from "../Redux/userslice.js";
 function IsAuth(){
            let {serverURL}=useContext(ServerContext);
+           let dispatch=useDispatch();
+           let navigate=useNavigate();
+           let {userData}=useSelector(state=>state.user)
+           let[loading,setLoading]=useState(false)
     async function handlegoogleauth(){
+        setLoading(true)
         try {
             let response=await signInWithPopup(auth,provider);
             const user = response.user;
@@ -21,9 +29,15 @@ function IsAuth(){
             const email=user.email
 
             let result=await axios.post(`${serverURL}/api/auth/google`,{name,email},{withCredentials:true})
-            console.log(result.data)
+            dispatch(setuserData(result.data))
+            if(userData){
+            navigate("/")
+            }
+            
+
         } catch (error) {
             console.log(error)
+            setLoading(false)
         }
     }
     return (

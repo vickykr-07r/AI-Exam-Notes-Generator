@@ -3,4 +3,4 @@ export let authRouter=express.Router();
 import { googleAuth, logout } from "../Controllers/IsAuth.controllers.js";
 
 authRouter.post("/google",googleAuth);
-authRouter.post("/logout",logout);
+authRouter.get("/logout",logout);

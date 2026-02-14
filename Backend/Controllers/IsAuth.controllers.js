@@ -36,7 +36,7 @@ try {
 
 export const logout=async(req,res)=>{
 try {
-    await  res.clearCookie(token);
+    await  res.clearCookie("token");
     return res.status(200).json({
         message:"logout successfully"
     })

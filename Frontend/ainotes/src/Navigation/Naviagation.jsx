@@ -3,6 +3,7 @@ import Style from "../Navigation/Naviagation.module.css"
 import { IoDiamondSharp } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa";
 import { useContext, useState } from "react";
+import { FaBook } from "react-icons/fa";
 import axios from "axios"
 import { ServerContext } from "../Context/servercontext.jsx";
 import { useNavigate } from "react-router-dom";
@@ -39,9 +40,13 @@ function Naviagation(){
          <span>{credits}</span>
          <span><FaPlus /></span>
         </div>
+
+        <div className={Style.notes}>
+         <button onClick={()=>{naviagte("/notes")}}><FaBook />Your Notes</button>
+        </div>
          
          <div className={Style.profilebutton} onClick={()=>{setShowProfile(!showprofile);setShowCredits(false)}}>
-            <button>{userData.name.slice(0,1)}</button>
+            <button >{userData.name.slice(0,1)}</button>
          </div>
 
         </div>
@@ -52,7 +57,7 @@ function Naviagation(){
         <div className={Style.creditPopup}>
           <h1>Buy Credits</h1>
           <p>Use Credits To Generate AI Notes,Diagrams & PDF's</p>
-          <button>Buy Credits</button>
+          <button onClick={()=>{naviagte("/pricing")}}>Buy Credits</button>
         </div>
          )}
 

@@ -7,6 +7,7 @@ import { BsFolderSymlinkFill } from "react-icons/bs";
 import { FaBookReader } from "react-icons/fa";
 import { FaChartArea } from "react-icons/fa";
 import { FaDownload } from "react-icons/fa";
+import { Link } from "react-router-dom";
 function Home(){
     return(
         <>
@@ -44,9 +45,9 @@ function Home(){
         <div className={Style.footermiddle}>
             <h1>Quick Links</h1>
             <ul>
-                <li><a href="">Notes</a></li>
-                <li><a href="">History</a></li>
-                <li><a href="">Add Credits</a></li>
+                <li><Link to="/notes">Notes</Link></li>
+                <li><Link to="/history">History</Link></li>
+                <li><Link to="/pricing">Add Credits</Link></li>
             </ul>
         </div>
 

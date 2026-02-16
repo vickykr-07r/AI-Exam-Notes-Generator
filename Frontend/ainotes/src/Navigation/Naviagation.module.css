@@ -45,6 +45,34 @@
     transform: scale(1.05);
 }
 
+.notes{
+    display: flex;
+    align-items: center;
+}
+
+.notes button{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: linear-gradient(45deg,#22c55e,#16a34a);
+    color: white;
+    transition: 0.3s;
+}
+
+.notes button:hover{
+    transform: scale(1.05);
+    background: linear-gradient(45deg,#16a34a,#15803d);
+}
+
+.notes button svg{
+    font-size: 16px;
+}
+
 .profilebutton button{
     width: 40px;
     height: 40px;
@@ -137,5 +165,34 @@
 
     .creditPopup{
         right: 20px;
+    }
+
+    .notes button{
+        padding: 7px 12px;
+        font-size: 13px;
+    }
+}
+
+@media(max-width:480px){
+    .nav{
+        height: auto;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+
+    .navright{
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .notes button{
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .navrightbox{
+        font-size: 12px;
+        padding: 6px 10px;
     }
 }

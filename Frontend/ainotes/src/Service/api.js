@@ -8,4 +8,8 @@ import { setuserData } from "../Redux/userslice";
     } catch (error) {
         console.log(error)
     }
-}export default getcurrentuser
+}
+
+
+
+export default getcurrentuser

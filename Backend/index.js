@@ -26,6 +26,8 @@ app.use("/api/auth",authRouter)
 import { userRouter } from "./Routes/user.routes.js";
 app.use("/api/user",userRouter)
 
+import { notesRouter } from "./Routes/generate.route.js";
+app.use("/api/notes",notesRouter)
 app.listen(process.env.PORT,(req,res)=>{
  console.log("the app is listening");
  dbconnects();

@@ -7,9 +7,14 @@ const userSlice=createSlice({
     reducers:{
      setuserData:(state,actions)=>{
      state.userData=actions.payload
+     },
+     updateCredits:(state,actions)=>{
+          if(state.userData){
+            state.userData.credits=actions.payload
+          }
      }
     }
 })
 
-export const {setuserData}=userSlice.actions
+export const {setuserData,updateCredits}=userSlice.actions
 export default userSlice.reducer

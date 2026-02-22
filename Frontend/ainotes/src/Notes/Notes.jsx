@@ -5,6 +5,8 @@ import axios from "axios"
 import { ServerContext } from "../Context/servercontext.jsx"
 import { useDispatch } from "react-redux"
 import { updateCredits } from "../Redux/userslice.js"
+import Sidebar from "../Sidebar/Sidebar.jsx"
+import FinalResult from "../FinalResult/FinalResult.jsx"
 function Notes(){
     const [data,setData]=useState({
     topic:"",
@@ -36,9 +38,9 @@ function Notes(){
                  result:result.data
             }))
 
-            if(typeof result.creditsLeft==="number"){
-               dispatch(updateCredits(result.data.creditsLeft))
-            }
+           if(typeof result.data.creditsLeft === "number"){
+           dispatch(updateCredits(result.data.creditsLeft))
+           }
         } catch (error) {
           console.log(error)  
         }
@@ -59,11 +61,11 @@ function Notes(){
          </form>
         </div>
         {data.result && (
-  <div className={Style.result}>
-    <h2>Generated Notes</h2>
-    <pre>{JSON.stringify(data.result.data, null, 2)}</pre>
-  </div>
-)}
+        <div className={Style.result}>
+        <Sidebar result={data.result.data}/>
+        <FinalResult result={data.result.data}/>
+       </div>
+       )}
         </div>
         </>
     ) 

@@ -1,14 +1,76 @@
 .dataside{
   flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .notes{
+  width: 100%;
+  max-width: 950px;
   background: rgba(255,255,255,0.97);
   border-radius: 28px;
-  padding: 38px;
+  padding: 34px;
   backdrop-filter: blur(12px);
   box-shadow: 0 10px 35px rgba(0,0,0,0.08);
   line-height: 1.85;
+  min-height: 85vh;
+}
+
+.nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.navleft h1{
+  font-size: 22px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #111827;
+}
+
+.navright{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.revisionmode{
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  background: linear-gradient(135deg,#6366f1,#8b5cf6);
+  color: white;
+  transition: 0.3s;
+}
+
+.active{
+  background: linear-gradient(135deg,#ef4444,#f97316);
+}
+
+.navright button:last-child{
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  background: #f3f4f6;
+  color: #111827;
+  transition: 0.3s;
+}
+
+.navright button:last-child:hover{
+  background: #e5e7eb;
 }
 
 .notes h1{
@@ -26,6 +88,61 @@
   color: #374151;
 }
 
+.notes ul{
+  margin-top: 8px;
+}
+
 .notes li{
   margin-left: 18px;
+  margin-top: 6px;
+}
+
+.subtopics{
+  margin-top: 10px;
+  padding: 22px;
+  background: #f9fafb;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+}
+
+.subtopics > p{
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.subtopics div{
+  margin-bottom: 16px;
+}
+
+.subtopics div p{
+  font-size: 14px;
+  font-weight: 600;
+  color: #6366f1;
+  margin-bottom: 6px;
+}
+
+.subtopics li{
+  font-size: 14px;
+  margin-left: 16px;
+  margin-bottom: 6px;
+  color: #374151;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.subtopics li:hover{
+  color: #6366f1;
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px){
+  .notes{
+    padding: 22px;
+    border-radius: 18px;
+  }
+
+  .subtopics{
+    padding: 16px;
+  }
 }

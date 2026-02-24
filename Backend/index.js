@@ -28,6 +28,9 @@ app.use("/api/user",userRouter)
 
 import { notesRouter } from "./Routes/generate.route.js";
 app.use("/api/notes",notesRouter)
+
+import { pdfRouter } from "./Routes/pdf.routes.js";
+app.use("/api/pdf",pdfRouter)
 app.listen(process.env.PORT,(req,res)=>{
  console.log("the app is listening");
  dbconnects();

@@ -4,6 +4,7 @@ import { FaBook } from "react-icons/fa";
 import { useState } from "react";
 import MermaidChart from "../Mermad/Mermad.jsx";
 import Charts from "../Rechart/Rechart.jsx";
+import { downloadpdf } from "../Service/api.js";
 function FinalResult({result}){
     const [quickrevision,setquickrevision]=useState(false);
     return(
@@ -16,7 +17,7 @@ function FinalResult({result}){
              </div>
              <div className={Style.navright}>
              <button onClick={()=>{setquickrevision(!quickrevision)}}  className={`${Style.revisionmode} ${quickrevision ? Style.active : ""}`}> {quickrevision ? "Exit Revision Mode" :"Quick Revision (5 min)"}</button>
-             <button>Download PDF</button>
+             <button onClick={()=>{downloadpdf(result)}}>Download PDF</button>
              </div>
             </div>
 

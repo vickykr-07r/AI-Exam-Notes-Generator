@@ -63,7 +63,7 @@ function Naviagation(){
 
          {showprofile && (
           <div className={Style.button}>
-           <button>History</button>
+           <button onClick={()=>{naviagte("/history")}}>History</button>
            <button onClick={handleSignout}>Signout</button>
           </div>
          )}

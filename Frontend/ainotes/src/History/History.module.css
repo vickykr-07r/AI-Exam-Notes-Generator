@@ -1,90 +1,95 @@
-.container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+.container{
+  display:flex;
+  flex-direction:column;
+  height:100vh;
 }
 
-.main {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
+.data{
+  flex:1;
+  display:flex;
+  flex-direction:column;
 }
 
-.sidebar {
-  width: 300px;
-  background: #f8f9fb;
-  border-right: 1px solid #e3e3e3;
-  padding: 15px;
-  overflow-y: auto;
+.main{
+  display:flex;
+  flex:1;
+  overflow:hidden;
 }
 
-.content {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
+.sidebar{
+  width:30%;
+  min-width:260px;
+  border-right:1px solid #ddd;
+  padding:20px;
+  overflow-y:auto;
+  height:calc(100vh - 70px);
 }
 
-.empty {
-  text-align: center;
-  color: gray;
-  margin-top: 20px;
+.content{
+  flex:1;
 }
 
-.card {
-  background: white;
-  padding: 14px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: 0.2s;
-  cursor: pointer;
+.finalresult{
+  position:absolute;
+  right:0;
+  top:70px;
+  width:70%;
+  padding:20px;
+  overflow-y:auto;
+  height:calc(100vh - 70px);
 }
 
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+.card{
+  border:1px solid #e2e2e2;
+  border-radius:10px;
+  padding:15px;
+  margin-bottom:15px;
+  cursor:pointer;
 }
 
-.topic {
-  font-size: 16px;
-  margin-bottom: 6px;
-  color: #333;
+.topic{
+  font-size:18px;
+  font-weight:600;
 }
 
-.meta {
-  font-size: 13px;
-  color: #666;
-  margin: 2px 0;
+.meta{
+  font-size:14px;
+  margin:4px 0;
 }
 
-.meta span {
-  font-weight: 600;
-  color: #222;
+.tags{
+  margin-top:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
 }
 
-.tags {
-  margin-top: 6px;
+.tags span{
+  background:#f1f1f1;
+  padding:4px 8px;
+  border-radius:5px;
+  font-size:12px;
 }
 
-.tags span {
-  display: inline-block;
-  background: #eef2ff;
-  color: #4a5cff;
-  font-size: 11px;
-  padding: 3px 7px;
-  border-radius: 6px;
-  margin-right: 5px;
-  margin-top: 4px;
+.empty{
+  font-size:14px;
+  color:#888;
 }
 
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    height: 40vh;
+@media (max-width:900px){
+  .main{
+    flex-direction:column;
   }
 
-  .main {
-    flex-direction: column;
+  .sidebar{
+    width:100%;
+    height:auto;
+    max-height:300px;
+  }
+
+  .finalresult{
+    position:static;
+    width:100%;
+    height:auto;
   }
 }

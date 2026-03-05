@@ -1,9 +1,149 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { IoMdArrowBack } from "react-icons/io";
+import Style from "../Pricing/Pricing.module.css";
+
 function Pricing(){
-    return(
-        <>
-        <p>Pricing</p>
-        </>
-    )
+
+ const navigate = useNavigate();
+
+ const [selectedPrice,setSelectedPrice] = useState(null);
+ const [paying,setPaying] = useState(false);
+ const [payingAmount,setPayingAmount] = useState(null);
+
+ const handlePaying = (amount)=>{
+   setPaying(true);
+   setPayingAmount(amount);
+
+   setTimeout(()=>{
+     setPaying(false);
+   },2000);
+ }
+
+ return(
+  <>
+   <div className={Style.container}>
+
+    <div className={Style.nav}>
+
+     <div className={Style.back} onClick={()=>navigate(-1)}>
+      <IoMdArrowBack/> Back
+     </div>
+
+     <div className={Style.heading}>
+      <h1>Buy Credits</h1>
+      <p>Choose a plan that fits your study plans</p>
+     </div>
+
+    </div>
+
+    <div className={Style.cards}>
+     
+     <PricingCard
+      title="Starter"
+      price="₹100"
+      amount={100}
+      credits="50 Credits"
+      description="Best value for students"
+      features={[
+       "All Starter features",
+       "More credits per plan",
+       "Revision mode access",
+       "Priority AI response"
+      ]}
+      selectedPrice={selectedPrice}
+      setSelectedPrice={setSelectedPrice}
+      onBuy={handlePaying}
+      paying={paying}
+      payingAmount={payingAmount}
+     />
+     
+     <PricingCard
+      title="popular"
+      price="₹200"
+      amount={200}
+      credits="120 Credits"
+      description="Best value for students"
+      features={[
+       "All Starter features",
+       "More credits per plan",
+       "Revision mode access",
+       "Priority AI response"
+      ]}
+      selectedPrice={selectedPrice}
+      setSelectedPrice={setSelectedPrice}
+      onBuy={handlePaying}
+      paying={paying}
+      payingAmount={payingAmount}
+     />
+
+     <PricingCard
+      title="Pro Learner"
+      price="₹500"
+      amount={500}
+      credits="300 Credits"
+      description="For serious exam preparation"
+      features={[
+       "All Starter features",
+       "More credits per plan",
+       "Revision mode access",
+       "Priority AI response"
+      ]}
+      selectedPrice={selectedPrice}
+      setSelectedPrice={setSelectedPrice}
+      onBuy={handlePaying}
+      paying={paying}
+      payingAmount={payingAmount}
+     />
+
+    </div>
+
+   </div>
+  </>
+ )
 }
 
-export default Pricing
+function PricingCard({
+ title,
+ price,
+ amount,
+ credits,
+ description,
+ features,
+ selectedPrice,
+ setSelectedPrice,
+ onBuy,
+ paying,
+ payingAmount
+}){
+
+ const isSelected = selectedPrice === amount;
+ const isPayingThisCard = paying && payingAmount === amount;
+
+ return(
+  <div
+   className={`${Style.card} ${isSelected ? Style.active : ""}`}
+   onClick={()=>setSelectedPrice(amount)}
+  >
+
+   <h2>{title}</h2>
+   <p>{description}</p>
+
+   <h1>{price}</h1>
+   <p>{credits}</p>
+
+   <button onClick={()=>onBuy(amount)}>
+    {isPayingThisCard ? "Processing..." : "Buy Now"}
+   </button>
+
+   <ul>
+    {features.map((t,i)=>(
+     <li key={i}>{t}</li>
+    ))}
+   </ul>
+
+  </div>
+ )
+}
+
+export default Pricing;

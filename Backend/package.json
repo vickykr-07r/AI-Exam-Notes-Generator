@@ -20,6 +20,7 @@
     "jsonwebtoken": "^9.0.3",
     "moongose": "^1.0.0",
     "nodemon": "^3.1.11",
-    "pdfkit": "^0.17.2"
+    "pdfkit": "^0.17.2",
+    "stripe": "^20.4.1"
   }
 }

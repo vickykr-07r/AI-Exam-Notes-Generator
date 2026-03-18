@@ -1,5 +1,8 @@
 import express from "express";
 const app=express();
+import { stripeWebhook } from "./Controllers/Credits.controllers.js";
+
+app.post("/api/credits/webhook",express.raw({type:"application/json"}),stripeWebhook)
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -31,6 +34,10 @@ app.use("/api/notes",notesRouter)
 
 import { pdfRouter } from "./Routes/pdf.routes.js";
 app.use("/api/pdf",pdfRouter)
+
+import { creditRouter } from "./Routes/credits.routes.js";
+app.use("/api/credit",creditRouter)
+
 app.listen(process.env.PORT,(req,res)=>{
  console.log("the app is listening");
  dbconnects();

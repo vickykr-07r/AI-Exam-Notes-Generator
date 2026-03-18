@@ -20,7 +20,7 @@ export const generateNotes=async(req,res)=>{
         })
       }
 
-       user.credits+=10;
+       
 
       if(user.credits < 10){
         user.isCreditAvailable=false
@@ -41,7 +41,7 @@ export const generateNotes=async(req,res)=>{
 
      
       if(user.credits<=0) user.isCreditAvailable=false;
-
+      user.credits-=10;
       if(!Array.isArray(user.notes)){
         user.notes=[]
       }

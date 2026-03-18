@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Pricing from './Pricing/Pricing.jsx'
 import History from './History/History.jsx'
 import Notes from './Notes/Notes.jsx'
+import { PaymentSuccess } from './PaymentSuccess/PaymentSuccess.jsx'
+import { PaymentFailed } from './PaymentFailed/PaymentFailed.jsx'
 function App() {
   const dispatch=useDispatch();
     useEffect(()=>{
@@ -23,6 +25,8 @@ function App() {
       <Route path='/history' element={userData ? <History/>:<Navigate to="/isauth"/>}/>
       <Route path='/notes' element={userData ? <Notes/>:<Navigate to="/isauth"/>}/>
       <Route path='/pricing' element={userData ? <Pricing/>:<Navigate to="/isauth"/>}/>
+      <Route path='/payment-success' element={<PaymentSuccess/>}/>
+      <Route path='/payment-failed' element={<PaymentFailed/>}/>
     </Routes>
     </>
   )

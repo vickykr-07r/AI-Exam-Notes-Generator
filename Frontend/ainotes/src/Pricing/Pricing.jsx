@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoMdArrowBack } from "react-icons/io";
 import Style from "../Pricing/Pricing.module.css";
+import axios from "axios"
+import { useContext } from "react";
+import { ServerContext } from "../Context/servercontext.jsx";
 
 function Pricing(){
 
@@ -10,11 +13,18 @@ function Pricing(){
  const [selectedPrice,setSelectedPrice] = useState(null);
  const [paying,setPaying] = useState(false);
  const [payingAmount,setPayingAmount] = useState(null);
+ let {serverURL}=useContext(ServerContext)
 
- const handlePaying = (amount)=>{
+ const handlePaying = async(amount)=>{
    setPaying(true);
    setPayingAmount(amount);
 
+   const result= await axios.post(`${serverURL}/api/credit/order`,{amount},{withCredentials:true})
+   if(result.data.url){
+    window.location.href=result.data.url
+   }
+
+   setPaying(false)
    setTimeout(()=>{
      setPaying(false);
    },2000);
